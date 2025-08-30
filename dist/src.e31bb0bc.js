@@ -118,21 +118,20 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
-var button = document.querySelector("#addBookmarkBtn");
-var input = document.querySelector("#bookmarkInput");
-var list = document.querySelector("#bookmarkList");
+var button = document.getElementById("addBookmarkBtn");
+var input = document.getElementById("bookmarkInput");
+var list = document.getElementById("bookmarkList");
 var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
 function renderItem(url) {
-  var ind = document.createElement("li");
-  ind.innerHTML = "".concat(url, " <button class=\"delete\">X</button>");
-  list.appendChild(ind);
-  var deleteButton = ind.querySelector(".delete");
-  deleteButton.addEventListener("click", function () {
+  var li = document.createElement("li");
+  li.innerHTML = "\n    <span>".concat(url, "</span>\n    <button class=\"delete\">X</button>\n  ");
+  list.appendChild(li);
+  li.querySelector(".delete").addEventListener("click", function () {
     bookmarks = bookmarks.filter(function (item) {
       return item !== url;
     });
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-    ind.remove();
+    li.remove();
   });
 }
 bookmarks.forEach(renderItem);
@@ -169,7 +168,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49702" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
