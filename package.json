@@ -1,20 +1,20 @@
 {
-  "name": "zakladka",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "parcel serve src/index.html --open",
-    "build": "parcel build src/index.html"
+  "devDependencies": {
+    "@partiellkorrekt/parcel-transformer-handlebars": "^1.0.5",
+    "parcel": "^2.15.4",
+    "parcel-transformer-handlebars": "^1.0.0"
   },
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "handlebars": "^4.7.8"
   },
-  "devDependencies": {
-    "@types/handlebars": "^4.0.40",
-    "parcel-plugin-handlebars": "^0.4.4"
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.{hbs,handlebars}": [
+      "@partiellkorrekt/parcel-transformer-handlebars"
+    ]
   }
 }
